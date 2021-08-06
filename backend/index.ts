@@ -11,6 +11,20 @@ if (!process.env.PORT) {
 
 const port = parseInt(process.env.PORT, 10); // make sure parse int does not recieve undefined
 
+app.get('/api/forecast', (req: Request, res: Response) => {
+  console.log(`***${req.method} request from ${req.hostname}(${req.ip})***`);
+  const lat: number = Number(req.query.lat);
+  const lon: number = Number(req.query.lon);
+  if (!(lat && lon)) {
+    res.status(400).json({
+      message: 'Latitude and longitude not found',
+    });
+  } else {
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=${process.env.API_KEY}`;
+    res.send(`lat: ${lat} lon: ${lon} url: ${url}`);
+  }
+});
+
 app.listen(port, () => {
   console.log(`App running at http://localhost:${port}`);
 });
