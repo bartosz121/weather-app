@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import * as dotenv from 'dotenv';
 
+import Logger from './logger';
+
 dotenv.config();
 
 const app = express();
@@ -12,10 +14,11 @@ if (!process.env.PORT) {
 const port = parseInt(process.env.PORT, 10); // make sure parse int does not recieve undefined
 
 app.get('/api/forecast', (req: Request, res: Response) => {
-  console.log(`***${req.method} request from ${req.hostname}(${req.ip})***`);
+  Logger.debug(`***${req.method} request from ${req.hostname}(${req.ip})***`);
   const lat: number = Number(req.query.lat);
   const lon: number = Number(req.query.lon);
   if (!(lat && lon)) {
+    Logger.warn('/api/forecast called without params');
     res.status(400).json({
       message: 'Latitude and longitude not found',
     });
@@ -26,5 +29,5 @@ app.get('/api/forecast', (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`App running at http://localhost:${port}`);
+  Logger.debug(`App running at http://localhost:${port}`);
 });
