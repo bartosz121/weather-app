@@ -1,12 +1,14 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import Map from './components/map/map.component';
 
 function App() {
-  return (
-    <div className="App">
-      Hello world
-    </div>
-  );
+    return (
+        <div className="App">
+          <Map />
+        </div>
+    )
 }
 
-export default App;
+export default App
