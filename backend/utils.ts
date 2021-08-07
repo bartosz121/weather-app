@@ -9,7 +9,6 @@ const fetchForecast = async (url: string) => {
 
   const forecast = await response.json();
   return {
-    message: 'ok',
     status: response.status,
     forecastData: forecast,
   };
