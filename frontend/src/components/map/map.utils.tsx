@@ -10,12 +10,17 @@ export const GeoSearchStopOnClick = () => {
   return null;
 }
 
-export const AskForGeolocation = ({ setPosition, flyToMaxZoomLevel }: { setPosition: any, flyToMaxZoomLevel: number }) => {
+interface AskForGeolocationProps {
+  setPosition: React.Dispatch<React.SetStateAction<LatLng | null>>,
+  maxZoomLevelFlyTo: number
+}
+
+export const AskForGeolocation = ({ setPosition, maxZoomLevelFlyTo }: AskForGeolocationProps) => {
   const map = useMap();
 
   useEffect(() => {
     map.locate().on('locationfound', (e) => {
-      map.flyTo(e.latlng, map.getZoom() > flyToMaxZoomLevel ? map.getZoom() : flyToMaxZoomLevel)
+      map.flyTo(e.latlng, map.getZoom() > maxZoomLevelFlyTo ? map.getZoom() : maxZoomLevelFlyTo)
       setPosition(e.latlng)
     })
   }, [])
@@ -23,11 +28,17 @@ export const AskForGeolocation = ({ setPosition, flyToMaxZoomLevel }: { setPosit
   return null;
 }
 
-export const AddMarker = ({ position, setPosition, flyToMaxZoomLevel }: any) => {
+interface AddMarkerProps {
+  position: LatLng | null,
+  setPosition: React.Dispatch<React.SetStateAction<LatLng | null>>,
+  maxZoomLevelFlyTo: number
+}
+
+export const AddMarker = ({ position, setPosition, maxZoomLevelFlyTo }: AddMarkerProps) => {
   const map = useMap();
 
   useMapEvent('click', (e: LeafletMouseEvent) => {
-    map.flyTo(e.latlng, map.getZoom() > flyToMaxZoomLevel ? map.getZoom() : flyToMaxZoomLevel)
+    map.flyTo(e.latlng, map.getZoom() > maxZoomLevelFlyTo ? map.getZoom() : maxZoomLevelFlyTo)
     setPosition(e.latlng)
   })
 
