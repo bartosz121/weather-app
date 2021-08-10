@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { LatLngExpression as LatLng, LeafletMouseEvent } from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvent, useMapEvents } from 'react-leaflet';
+import React, { useState } from 'react';
+import { LatLngExpression as LatLng } from 'leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 //@ts-ignore
 import { SearchControl, OpenStreetMapProvider } from 'react-leaflet-geosearch';
 
@@ -8,10 +8,14 @@ import { GeoSearchStopOnClick, AskForGeolocation, AddMarker } from './map.utils'
 
 import LeafletContainer from './map.styles';
 
-const Map = () => {
-  const [position, setPosition] = useState<LatLng | null>(null)
+interface mapProps {
+  position: LatLng | null,
+  setPosition: React.Dispatch<React.SetStateAction<LatLng | null>>
+}
+
+const Map = ({position, setPosition}: mapProps) => {
   const provider = OpenStreetMapProvider();
-  const flyToMaxZoomLevel = 10;
+  const maxZoomLevelFlyTo = 10;
 
   return (
     <LeafletContainer>
@@ -36,8 +40,8 @@ const Map = () => {
           keepResult={false}
         />
         <GeoSearchStopOnClick />
-        <AskForGeolocation setPosition={setPosition} flyToMaxZoomLevel={flyToMaxZoomLevel}/>
-        <AddMarker position={position} setPosition={setPosition} flyToMaxZoomLevel={flyToMaxZoomLevel}/>
+        <AskForGeolocation setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
+        <AddMarker position={position} setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
       </MapContainer>
     </LeafletContainer>
   )
