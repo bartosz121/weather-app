@@ -212,9 +212,51 @@ const ReactLeafletGeosearchCSS = css`
 }
 `
 
+// https://coolors.co/26532b-399e5a-5abcb9-63e2c6-6ef9f5
 const LeafletContainer = styled.div`
   width: 100vw;
   height: 100vh;
+
+  .fetch-btn {
+    position: absolute;
+    z-index: 500;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: #0d4c75;
+    padding: 12px 40px;
+    border: none;
+    border: 2px solid #5ABCB9;
+    border-radius: 20px;
+    background: #63E2C6;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all .3s ease;
+
+    &:hover {
+      background: #0d4c75;
+      color: #63E2C6;
+      border-color: #0d4c75;
+    }
+}
+
+  .bouncy{
+        animation:bouncy 5s infinite linear;
+      }
+
+  @keyframes bouncy {
+    0%{top:80%}
+    40%{top:80%}
+    43%{top:78%}
+    46%{top:80%}
+    48%{top:78%}
+    50%{top:80%}
+    100%{top:80%;}
+  } 
 
   & > div{
     width: 100%;

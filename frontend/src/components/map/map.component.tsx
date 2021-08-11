@@ -43,6 +43,7 @@ const Map = ({position, setPosition}: mapProps) => {
         <AskForGeolocation setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
         <AddMarker position={position} setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
       </MapContainer>
+      { position ? <button className='fetch-btn bouncy'>Check Forecast</button> : null}
     </LeafletContainer>
   )
 }
