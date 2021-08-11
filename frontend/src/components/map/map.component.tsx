@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { LatLngExpression as LatLng } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 //@ts-ignore
@@ -8,14 +9,18 @@ import { GeoSearchStopOnClick, AskForGeolocation, AddMarker } from './map.utils'
 
 import LeafletContainer from './map.styles';
 
-interface mapProps {
+interface mapProps extends RouteComponentProps {
   position: LatLng | null,
   setPosition: React.Dispatch<React.SetStateAction<LatLng | null>>
 }
 
-const Map = ({position, setPosition}: mapProps) => {
+const Map = ({position, setPosition, history}: mapProps) => {
   const provider = OpenStreetMapProvider();
   const maxZoomLevelFlyTo = 10;
+
+  const handleButtonClick = () => {
+    history.push(`/123,123`);
+  }
 
   return (
     <LeafletContainer>
@@ -43,9 +48,9 @@ const Map = ({position, setPosition}: mapProps) => {
         <AskForGeolocation setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
         <AddMarker position={position} setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
       </MapContainer>
-      { position ? <button className='fetch-btn bouncy'>Check Forecast</button> : null}
+      { position ? <button className='fetch-btn bouncy' onClick={() => handleButtonClick()}>Check Forecast</button> : null}
     </LeafletContainer>
   )
 }
 
-export default Map;
+export default withRouter(Map);

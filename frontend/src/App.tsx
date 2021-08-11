@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
+import { Switch, Route } from 'react-router-dom';
 import { LatLngExpression as LatLng } from 'leaflet';
 import './App.css'
 
-import Map from './components/map/map.component';
+import MapPage from './pages/MapPage/MapPage.component';
+import ForecastPage from './pages/ForecastPage/ForecastPage.component';
 
 function App() {
   const [position, setPosition] = useState<LatLng | null>(null)
     return (
         <div className="App">
-          <Map position={position} setPosition={setPosition} />
+          <Switch>
+            <Route exact path='/' >
+              <MapPage position={position} setPosition={setPosition} />
+            </Route>
+            <Route path='/:lat,:lon'>
+              <ForecastPage />
+            </Route>
+          </Switch>
         </div>
     )
 }
