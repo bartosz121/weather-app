@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Switch, Route } from 'react-router-dom';
-import { LatLngExpression as LatLng } from 'leaflet';
+import { LatLngLiteral as LatLng } from 'leaflet';
 import './App.css'
 
 import MapPage from './pages/MapPage/MapPage.component';
@@ -14,7 +14,7 @@ function App() {
             <Route exact path='/' >
               <MapPage position={position} setPosition={setPosition} />
             </Route>
-            <Route path='/:lat,:lon'>
+            <Route path='/:lat,:lng'>
               <ForecastPage />
             </Route>
           </Switch>

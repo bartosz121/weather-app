@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { LatLngExpression as LatLng, LeafletMouseEvent } from 'leaflet';
+import { LatLngLiteral as LatLng, LeafletMouseEvent } from 'leaflet';
 import { Marker, Popup, useMap, useMapEvent } from 'react-leaflet';
 
 export const GeoSearchStopOnClick = () => {
@@ -44,10 +44,10 @@ export const AddMarker = ({ position, setPosition, maxZoomLevelFlyTo }: AddMarke
 
   // TODO https://github.com/smeijer/leaflet-geosearch#results
   map.on('geosearch/showlocation', (e: any) => {
-    const pos: LatLng = [
-      parseFloat(e.location.y),
-      parseFloat(e.location.x),
-    ]
+    const pos: LatLng = {
+      lat: parseFloat(e.location.y),
+      lng: parseFloat(e.location.x),
+    }
     setPosition(pos)
   })
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { LatLngExpression as LatLng } from 'leaflet'
+import { LatLngLiteral as LatLng } from 'leaflet'
 
 import Map from '../../components/map/map.component'
 

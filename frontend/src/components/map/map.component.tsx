@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { LatLngExpression as LatLng } from 'leaflet';
+import { LatLngLiteral as LatLng } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 //@ts-ignore
 import { SearchControl, OpenStreetMapProvider } from 'react-leaflet-geosearch';
@@ -19,7 +19,7 @@ const Map = ({position, setPosition, history}: mapProps) => {
   const maxZoomLevelFlyTo = 10;
 
   const handleButtonClick = () => {
-    history.push(`/123,123`);
+    history.push(`${position?.lat},${position?.lng}`);
   }
 
   return (

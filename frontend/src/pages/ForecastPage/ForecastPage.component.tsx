@@ -3,15 +3,15 @@ import { useParams } from 'react-router';
 
 interface params {
     lat: string,
-    lon: string
+    lng: string
 }
 
 const ForecastPage = () => {
-    const { lat, lon } = useParams<params>();
+    const { lat, lng } = useParams<params>();
     return (
         <div>
             <p>lat: {lat}</p>
-            <p>lon: {lon}</p>
+            <p>lon: {lng}</p>
         </div>
     )
 }
