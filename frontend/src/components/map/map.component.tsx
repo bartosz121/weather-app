@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { LatLngLiteral as LatLng } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
@@ -31,7 +31,7 @@ const Map = ({position, setPosition, history}: mapProps) => {
         scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
         <SearchControl
           provider={provider}
           style={'button'}
