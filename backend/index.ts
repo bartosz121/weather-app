@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 import * as dotenv from 'dotenv';
 
 import Logger from './logger';
@@ -7,6 +8,14 @@ import fetchForecast from './utils';
 dotenv.config();
 
 const app = express();
+
+const allowedOrigins = ['http://localhost:3000'];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
+app.use(cors(options));
 
 if (!process.env.PORT) {
   process.exit(1);
