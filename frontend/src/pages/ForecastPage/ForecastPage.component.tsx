@@ -1,8 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router';
-import { RouteComponentProps, withRouter, Redirect } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { validateParams } from './ForecastPage.utils';
+
+import Forecast from '../../components/forecast/forecast.component';
 
 interface params {
     lat: string,
@@ -17,9 +19,8 @@ const ForecastPage = ({ history }: RouteComponentProps) => {
 
     
     return (
-        <div>
-            <p>lat: {lat}</p>
-            <p>lon: {lng}</p>
+        <div className='forecast-page'>
+            <Forecast lat={parseFloat(lat)} lng={parseFloat(lng)}/>
         </div>
     )
 }
