@@ -8,6 +8,7 @@ import { SearchControl, OpenStreetMapProvider } from 'react-leaflet-geosearch';
 import { GeoSearchStopOnClick, AskForGeolocation, AddMarker } from './map.utils';
 
 import LeafletContainer from './map.styles';
+import Button from '../button/button.component';
 
 interface mapProps extends RouteComponentProps {
   position: LatLng | null,
@@ -48,7 +49,7 @@ const Map = ({position, setPosition, history}: mapProps) => {
         <AskForGeolocation setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
         <AddMarker position={position} setPosition={setPosition} maxZoomLevelFlyTo={maxZoomLevelFlyTo}/>
       </MapContainer>
-      { position ? <button className='fetch-btn bouncy' onClick={() => handleButtonClick()}>Check Forecast</button> : null}
+      { position ? <Button fetchBtn={true} onClick={() => handleButtonClick()}>Check Forecast</Button> : null}
     </LeafletContainer>
   )
 }
