@@ -1,37 +1,37 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Button } from './Button';
+import Button from '../components/button/button.component'
+
+import './button.css'
 
 export default {
-  title: 'Example/Button',
-  component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+    title: 'Button',
+    component: Button,
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
 export const Small = Template.bind({});
 Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+    size: 'small',
+    children: 'Button'
+}
+
+export const Normal = Template.bind({});
+Normal.args = {
+    size: 'normal',
+    children: 'Button'
+}
+
+export const Big = Template.bind({});
+Big.args = {
+    size: 'big',
+    children: 'Button'
+}
+
+export const FetchButton = Template.bind({});
+FetchButton.args = {
+    fetchBtn: true,
+    children: 'Fetch Button'
+}
