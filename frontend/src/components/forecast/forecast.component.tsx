@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { ForecastContainer } from './forecast.styles'
 
 const EXPRESS_PORT = process.env.REACT_APP_EXPRESS_PORT;
 
-interface ForecastProps {
+interface ForecastProps extends RouteComponentProps{
     lat: number,
-    lng: number
+    lng: number,
 }
 
-const Forecast = ({ lat, lng }: ForecastProps) => {
+const Forecast = ({ lat, lng, history }: ForecastProps) => {
 
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -21,7 +22,10 @@ const Forecast = ({ lat, lng }: ForecastProps) => {
             setLoading(false);
             console.log(data);
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+            alert(`${error} Redirecting...`);
+            history.push('/');
+        })
     }, [])
 
     return (
@@ -33,4 +37,4 @@ const Forecast = ({ lat, lng }: ForecastProps) => {
     )
 }
 
-export default Forecast;
+export default withRouter(Forecast);
