@@ -3,7 +3,7 @@ import Hourly from "./hourly";
 import Daily from "./daily";
 import Alerts from "./alerts";
 
-export interface ForecastApiRespose {
+export interface ForecastResponse {
     status: number,
     forecastData: ForecastData
 }
