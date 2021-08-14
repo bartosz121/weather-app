@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { ForecastContainer } from './forecast.styles'
+import { getLocationName } from './forecast.utils';
+import { ForecastContainer } from './forecast.styles';
+
+import { ForecastResponse } from '../../interfaces/forecast/forecastResponse';
 
 const EXPRESS_PORT = process.env.REACT_APP_EXPRESS_PORT;
 
@@ -13,6 +16,8 @@ interface ForecastProps extends RouteComponentProps{
 const Forecast = ({ lat, lng, history }: ForecastProps) => {
 
     const [loading, setLoading] = useState<boolean>(true);
+    const [forecast, setForecast] = useState<ForecastResponse>();
+    const [location, setLocation] = useState<string>("");
 
     useEffect(() => {
         (async () => {
@@ -22,8 +27,9 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
             // Forecast
             await fetch(forecastURL)
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
+            .then(forecastData => {
+                setForecast(forecastData);
+                console.log(forecastData)
             })
             .catch(error => {
                 alert(`${error} Redirecting...`);
@@ -33,7 +39,10 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
             // Location
             await fetch(locationURL)
             .then(response => response.json())
-            .then(locationData => {console.log(locationData)})
+            .then(locationData => {
+                setLocation(getLocationName(locationData));
+                console.log(locationData);
+            })
             .catch(error => {
                 alert(`${error} Redirecting...`);
                 history.push('/');
@@ -48,6 +57,8 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
             <div>lat: {lat}</div>
             <div>lng: {lng}</div>
             {loading ? <h1>loading</h1> : <h1>fetched</h1>}
+            { forecast ? <h1>{forecast.forecastData.current.weather[0].main}</h1> : null}
+            { location ? <h1>{location}</h1> : null}
         </ForecastContainer>
     )
 }
