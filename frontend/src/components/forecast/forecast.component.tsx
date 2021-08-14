@@ -15,17 +15,32 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        const URL = `http://localhost:${EXPRESS_PORT}/api/forecast?lat=${lat}&lon=${lng}`
-        fetch(URL)
-        .then(response => response.json())
-        .then(data => {
+        (async () => {
+            const forecastURL = `http://localhost:${EXPRESS_PORT}/api/forecast?lat=${lat}&lon=${lng}`
+            const locationURL = `https://nominatim.openstreetmap.org/reverse.php?lat=${lat}&lon=${lng}&addressdetails=0&format=jsonv2`
+    
+            // Forecast
+            await fetch(forecastURL)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                alert(`${error} Redirecting...`);
+                history.push('/');
+            })
+    
+            // Location
+            await fetch(locationURL)
+            .then(response => response.json())
+            .then(locationData => {console.log(locationData)})
+            .catch(error => {
+                alert(`${error} Redirecting...`);
+                history.push('/');
+            })
+
             setLoading(false);
-            console.log(data);
-        })
-        .catch(error => {
-            alert(`${error} Redirecting...`);
-            history.push('/');
-        })
+        })()
     }, [])
 
     return (
