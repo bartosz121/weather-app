@@ -12,8 +12,8 @@ interface BasicWeatherData {
     wind_speed: number,
     wind_gust?: number,
     wind_deg: number,
-    rain?: { '1h': number}, // TODO make sure its correct
-    snow?: { '1h': number}, // TODO make sure its correct
+    rain?: { '1h': number},
+    snow?: { '1h': number},
     weather: Array<CurrentWeather>,
 }
 
