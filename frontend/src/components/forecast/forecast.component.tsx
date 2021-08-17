@@ -3,6 +3,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { getLocationName } from './forecast.utils';
 import { ForecastContainer } from './forecast.styles';
+import ForecastHeader from '../forecast-header/forecast-header.component';
 
 import { ForecastResponse } from '../../interfaces/forecast/forecastResponse';
 
@@ -54,11 +55,8 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
 
     return (
         <ForecastContainer>
-            <div>lat: {lat}</div>
-            <div>lng: {lng}</div>
-            {loading ? <h1>loading</h1> : <h1>fetched</h1>}
-            { forecast ? <h1>{forecast.forecastData.current.weather[0].main}</h1> : null}
-            { location ? <h1>{location}</h1> : null}
+            {loading ? <h1>loading</h1> 
+            : <ForecastHeader locationName={location} current={forecast!.forecastData.current}/>}
         </ForecastContainer>
     )
 }
