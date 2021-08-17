@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const ForecastHeaderContainer = styled.div`
-    font-family: 'Raleway', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;

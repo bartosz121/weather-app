@@ -224,7 +224,6 @@ const LeafletContainer = styled.div`
     left: 50%;
     transform: translate(-50%,-50%);
     white-space: nowrap;
-    font-family: 'Raleway', sans-serif;
     font-size: 1em;
     font-weight: 700;
     color: #0d4c75;

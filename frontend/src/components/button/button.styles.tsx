@@ -75,7 +75,6 @@ const getButtonSize = ({ size }: ButtonProps) => {
 }
 
 const ButtonContainer = styled.button<ButtonProps>`
-  font-family: 'Raleway', sans-serif;
   color: #0d4c75;
   border: 2px solid #5ABCB9;
   border-radius: 5px;
