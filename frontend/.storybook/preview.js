@@ -1,3 +1,4 @@
+import '!style-loader!css-loader!../src/stories/font.css';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const customViewports = {
