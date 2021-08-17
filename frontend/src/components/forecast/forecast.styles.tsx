@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const ForecastContainer = styled.div`
-    width: 100%;
     height: 100%;
-    background: violet;
+    width: 100%;
+
+    @media only screen and (min-width: 1200px){
+        width: 80%;
+        margin: 0 auto;
+    }
 `
