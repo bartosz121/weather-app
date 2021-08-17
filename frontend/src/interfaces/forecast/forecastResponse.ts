@@ -14,7 +14,7 @@ interface ForecastData {
     timezone: string,
     timezone_offset: number,
     current: Current,
-    minutely: {}, // Excluded in API call
+    minutely?: {}, // Excluded in API call
     hourly: Array<Hourly>,
     daily: Array<Daily>,
     alerts?: Array<Alerts>
