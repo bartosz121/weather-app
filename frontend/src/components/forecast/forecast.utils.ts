@@ -30,6 +30,11 @@ export const unixToStringShort2Digit = (unix: number, timezone: string): string 
     return new Intl.DateTimeFormat([], {weekday: 'short', day: '2-digit', timeZone: timezone}).format(date);
 }
 
+export const unixToStringHourMinute = (unix: number, timezone: string): string => {
+    const date = new Date(unix * 1000);
+    return new Intl.DateTimeFormat([], {hour: '2-digit', minute: '2-digit', timeZone: timezone}).format(date);
+}
+
 
 // https://openweathermap.org/weather-conditions
 
