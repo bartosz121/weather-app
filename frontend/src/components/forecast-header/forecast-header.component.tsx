@@ -2,22 +2,22 @@ import React from 'react';
 import { ReactSkycon } from 'react-skycons-extended';
 
 import ForecastHeaderContainer from './forecast-header.styles'
-import { mapIconToSkycon } from './forecast-header.utils';
+import { mapIconToSkycon } from '../forecast/forecast.utils';
 
 import Current from '../../interfaces/forecast/current'
 
-export interface ForecastHeaderProps {
+export interface ForecastHeaderProps extends React.HTMLAttributes<HTMLElement> {
     locationName: string,
     current: Current,
 }
 
-const ForecastHeader = ({ locationName, current }: ForecastHeaderProps) => {
+const ForecastHeader = ({ locationName, current, ...props }: ForecastHeaderProps) => {
 
     const icon = current.weather[0].icon;
     const fetchTime = new Date(Date.now()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     return(
-        <ForecastHeaderContainer>
+        <ForecastHeaderContainer {...props}>
             <div className='location-name'>{locationName}</div>
             <div className="current-temp-container">
                 <div className="current-icon">

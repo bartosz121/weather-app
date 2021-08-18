@@ -3,11 +3,10 @@ import React from 'react';
 
 import ButtonContainer from './button.styles'
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
     fetchBtn?: boolean,
     size?: 'small' | 'normal' | 'big',
     children: React.ReactNode,
-    onClick?: () => void;
 }
 
 const Button = ({
