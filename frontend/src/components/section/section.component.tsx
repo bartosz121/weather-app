@@ -11,8 +11,8 @@ const Section = ({ title, children, ...props}: SectionProps) => {
 
     return (
         <SectionContainer {...props}>
-            <div className="section-title">{title}</div>
-            <hr className="white" />
+            <div className='section-title'>{title}</div>
+            <hr className='white' />
             <div className='section-content'>{children}</div>
         </SectionContainer>
     )
