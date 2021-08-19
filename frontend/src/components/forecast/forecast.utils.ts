@@ -37,6 +37,12 @@ export const unixToStringHourMinute = (unix: number, timezone: string): string =
     return new Intl.DateTimeFormat([], {hour: '2-digit', minute: '2-digit', timeZone: timezone}).format(date);
 }
 
+export const unixToStringDateTimeTZ = (unix: number, timezone: string): string => {
+    // 20/12/2020, 04:23 CET
+    const date = new Date(unix * 1000);
+    return new Intl.DateTimeFormat([], {day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName:'short', timeZone: timezone}).format(date);
+}
+
 export const unixToStringFullDateTimeTZ = (unix: number, timezone: string): string => {
     // Sunday, 20 December 2020 at 14:23:16 GMT+11
     const date = new Date(unix * 1000);
