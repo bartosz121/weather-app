@@ -54,6 +54,7 @@ const ForecastHeaderContainer = styled.div`
     @media only screen and (min-width: 576px){
 
         .location-name {
+            margin-top: 10px;
             font-size: 1.4em;
         }
 
