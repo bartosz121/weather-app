@@ -25,14 +25,22 @@ export const getLocationName = (locationData: LocationResponse): string => {
     } return locationData.display_name;
 }
 
-export const unixToStringShort2Digit = (unix: number, timezone: string): string => {
+export const unixToStringShortWeekDay2Digit = (unix: number, timezone: string): string => {
+    // Wed 20
     const date = new Date(unix * 1000);
     return new Intl.DateTimeFormat([], {weekday: 'short', day: '2-digit', timeZone: timezone}).format(date);
 }
 
 export const unixToStringHourMinute = (unix: number, timezone: string): string => {
+    // 03:00
     const date = new Date(unix * 1000);
     return new Intl.DateTimeFormat([], {hour: '2-digit', minute: '2-digit', timeZone: timezone}).format(date);
+}
+
+export const unixToStringFullDateTimeTZ = (unix: number, timezone: string): string => {
+    // Sunday, 20 December 2020 at 14:23:16 GMT+11
+    const date = new Date(unix * 1000);
+    return new Intl.DateTimeFormat([], {dateStyle: 'full', timeStyle: 'long', timeZone: timezone}).format(date);
 }
 
 
