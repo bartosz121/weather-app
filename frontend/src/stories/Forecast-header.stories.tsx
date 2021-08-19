@@ -19,4 +19,5 @@ export const Header = Template.bind({});
 Header.args = {
     current: forecastExample.forecastData.current,
     locationName: locationExample,
+    timezone: forecastExample.forecastData.timezone
 }

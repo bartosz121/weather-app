@@ -2,16 +2,17 @@ import React from 'react';
 import { ReactSkycon } from 'react-skycons-extended';
 
 import ForecastHeaderContainer from './forecast-header.styles'
-import { mapIconToSkycon } from '../forecast/forecast.utils';
+import { mapIconToSkycon, unixToStringDateTimeTZ } from '../forecast/forecast.utils';
 
 import Current from '../../interfaces/forecast/current'
 
 export interface ForecastHeaderProps extends React.HTMLAttributes<HTMLElement> {
-    locationName: string,
     current: Current,
+    locationName: string,
+    timezone: string,
 }
 
-const ForecastHeader = ({ locationName, current, ...props }: ForecastHeaderProps) => {
+const ForecastHeader = ({ current, locationName, timezone, ...props }: ForecastHeaderProps) => {
 
     const icon = current.weather[0].icon;
     const fetchTime = new Date(Date.now()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -32,6 +33,7 @@ const ForecastHeader = ({ locationName, current, ...props }: ForecastHeaderProps
                 Updated as of {fetchTime}
             </div>
             <div className="current-info-container">
+                <span className='current-info local-time'>Local time {unixToStringDateTimeTZ(Math.floor(Date.now() / 1000), timezone)}</span>
                 <span className='current-info feels-like'>Feels like {current.feels_like}&#176;C</span>
                 <span className='current-info pressure'>Barometer {current.pressure}hPa</span>
                 <span className='current-info humidity'>Humidity {current.humidity}%</span>
