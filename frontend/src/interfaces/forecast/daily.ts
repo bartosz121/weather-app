@@ -1,18 +1,18 @@
 import BasicWeatherData from './basicWeatherData';
 
-interface TemperatureThroughDay {
+export interface TemperatureThroughDay {
     morn: number,
     day: number,
     eve: number,
     night: number
 }
 
-interface TemperatureThroughDayWithMinMax extends TemperatureThroughDay{
+export interface TemperatureThroughDayWithMinMax extends TemperatureThroughDay{
     min: number,
     max: number,
 }
 
-interface Daily extends Omit<BasicWeatherData, 'temp' | 'feels_like' | 'rain' | 'snow'> {
+export interface Daily extends Omit<BasicWeatherData, 'temp' | 'feels_like' | 'rain' | 'snow'> {
     sunrise: number,
     sunset: number,
     moonrise: number,
@@ -24,5 +24,3 @@ interface Daily extends Omit<BasicWeatherData, 'temp' | 'feels_like' | 'rain' | 
     rain?: number,
     snow?: number,
 }
-
-export default Daily;

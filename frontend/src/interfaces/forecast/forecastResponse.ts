@@ -1,6 +1,6 @@
 import Current from "./current";
 import Hourly from "./hourly";
-import Daily from "./daily";
+import { Daily } from "./daily";
 import Alerts from "./alerts";
 
 export interface ForecastResponse {
