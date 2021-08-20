@@ -5,7 +5,7 @@ import Section from '../section/section.component';
 import { Card } from '../card/card.component';
 
 import { mapIconToSkycon, unixToStringShortWeekDay2Digit } from '../forecast/forecast.utils';
-import Daily from '../../interfaces/forecast/daily';
+import { Daily } from '../../interfaces/forecast/daily';
 
 interface DailySectionProps {
     daily: Daily[],
