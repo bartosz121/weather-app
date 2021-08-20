@@ -5,6 +5,7 @@ import ForecastHeader from '../forecast-header/forecast-header.component';
 import AlertsSection from '../alerts-section/alerts-section.component';
 import DailySection from '../daily-section/daily-section.component';
 import HourlySection from '../hourly-section/hourly-section.component';
+import DayDetailsSection from '../day-details-section/day-details-section.component';
 
 import { getLocationName } from './forecast.utils';
 import { ForecastContainer } from './forecast.styles';
@@ -76,6 +77,9 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
 
                 {/* Hourly */}
                 <HourlySection hourly={forecast!.forecastData.hourly} timezone={forecast!.forecastData.timezone} />
+
+                {/* Day Details Section */}
+                <DayDetailsSection dayDetails={forecast!.forecastData.daily[0]} timezone={forecast!.forecastData.timezone}/>
             </div>
             }
         </ForecastContainer>
