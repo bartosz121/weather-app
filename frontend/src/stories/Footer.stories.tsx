@@ -12,7 +12,6 @@ export default {
     component: Footer,
 } as ComponentMeta<typeof Footer>;
 
-const Template: ComponentStory<typeof Footer> = (args) => <TestingBackground><Footer {...args} /></TestingBackground>
+const Template: ComponentStory<typeof Footer> = (args) => <TestingBackground><Footer /></TestingBackground>
 
 export const Example = Template.bind({});
-Example.args = {}
