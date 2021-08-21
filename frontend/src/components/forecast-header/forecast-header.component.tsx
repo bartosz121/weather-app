@@ -39,8 +39,8 @@ const ForecastHeader = ({ current, locationName, timezone, ...props }: ForecastH
                 <span className='current-info humidity'>Humidity {current.humidity}%</span>
                 <span className='current-info dew-point'>Dew point {current.dew_point}&#176;C</span>
                 <span className='current-info clouds'>Clouds {current.clouds}%</span>
-                <span className='current-info visibility'>Visibility {current.visibility}m</span>
-                <span className='current-info wind'>Wind {current.wind_deg} {current.wind_speed}m/s</span>
+                <span className='current-info visibility'>Visibility {Math.round(current.visibility/1000)}km</span>
+                <span className='current-info wind'>Wind {current.wind_deg} {Math.round(current.wind_speed*3.6)}km/h</span>
             </div>
         </ForecastHeaderContainer>
     )
