@@ -4,5 +4,7 @@ body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox */
     box-sizing: border-box;
 }
