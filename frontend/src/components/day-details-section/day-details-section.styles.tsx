@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 const DayDetailsSectionContainer = styled.div`
 
+    .day-details-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
     .day-details {
         flex-grow: 1;
         flex-shrink: 0;
@@ -11,12 +17,6 @@ const DayDetailsSectionContainer = styled.div`
             flex-direction: row;
             align-items: center;
             font-size: 1.2em;
-        }
-
-        &-wrapper {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
         }
 
         &-info {
@@ -36,8 +36,12 @@ const DayDetailsSectionContainer = styled.div`
             }
         }
 
+        &-progressbars {
+            flex-basis: 0; // overflow fix on mobile
+        }
 
-        h3{
+
+        h3 {
             margin-top: 0;
             margin-bottom: 5px;
             text-transform: capitalize;
@@ -49,6 +53,14 @@ const DayDetailsSectionContainer = styled.div`
             text-transform: capitalize;
         }
     }
-`
 
+    @media only screen and (min-width: 768px){
+        .day-details {
+            &-progressbars {
+                flex-basis: auto;
+            }
+        }
+    }
+
+`
 export default DayDetailsSectionContainer;
