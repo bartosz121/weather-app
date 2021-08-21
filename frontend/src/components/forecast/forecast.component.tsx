@@ -24,6 +24,7 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [forecast, setForecast] = useState<ForecastResponse>();
     const [location, setLocation] = useState<string>("");
+    const [selectedDay, setSelectedDay] = useState<number>(0);
 
     useEffect(() => {
         (async () => {
@@ -74,13 +75,14 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
                 : null}
 
                 {/* Daily */}
-                <DailySection daily={forecast!.forecastData.daily} timezone={forecast!.forecastData.timezone} />
+                <DailySection daily={forecast!.forecastData.daily} timezone={forecast!.forecastData.timezone}
+                    selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
 
                 {/* Hourly */}
                 <HourlySection hourly={forecast!.forecastData.hourly} timezone={forecast!.forecastData.timezone} />
 
                 {/* Day Details Section */}
-                <DayDetailsSection dayDetails={forecast!.forecastData.daily[0]} timezone={forecast!.forecastData.timezone}/>
+                <DayDetailsSection dayDetails={forecast!.forecastData.daily[selectedDay]} timezone={forecast!.forecastData.timezone}/>
 
                 {/* Footer */}
                 <Footer />
