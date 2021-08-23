@@ -11,7 +11,7 @@ import DayDetailsSection from '../day-details-section/day-details-section.compon
 import Footer from '../footer/footer.component';
 
 import { getLocationName } from './forecast.utils';
-import { ForecastContainer } from './forecast.styles';
+import { ForecastContainer, BackgroundImage } from './forecast.styles';
 import { ForecastResponse } from '../../interfaces/forecast/forecastResponse';
 
 const EXPRESS_PORT = process.env.REACT_APP_EXPRESS_PORT;
@@ -69,44 +69,44 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
     })()
   }, [])
 
-  return transitions(({ opacity }, item) =>
+  return transitions((style, item) =>
     item ? (
       <animated.div
         style={{
           position: "absolute",
-          opacity: opacity.to({ range: [0.0, 1.0], output: [0, 1] })
+          ...style
         }}
       >
         <LoadingScreen />
       </animated.div>
     ) : (
       <animated.div
-        style={{
-          opacity: opacity.to({ range: [1.0, 0.0], output: [1, 0] })
-        }}
+        style={{...style}}
       >
+        <BackgroundImage icon={forecast!.forecastData.current.weather[0].icon}>
           <ForecastContainer>
-          {/* Header */}
-          <ForecastHeader className='forecast-header' locationName={location} current={forecast!.forecastData.current} timezone={forecast!.forecastData.timezone} />
+            {/* Header */}
+            <ForecastHeader className='forecast-header' locationName={location} current={forecast!.forecastData.current} timezone={forecast!.forecastData.timezone} />
 
-          {/* Alerts */}
-          {forecast?.forecastData.alerts ?
-              <AlertsSection alerts={forecast.forecastData.alerts} timezone={forecast.forecastData.timezone} />
-              : null}
+            {/* Alerts */}
+            {forecast?.forecastData.alerts ?
+                <AlertsSection alerts={forecast.forecastData.alerts} timezone={forecast.forecastData.timezone} />
+                : null}
 
-          {/* Daily */}
-          <DailySection daily={forecast!.forecastData.daily} timezone={forecast!.forecastData.timezone}
-              selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+            {/* Daily */}
+            <DailySection daily={forecast!.forecastData.daily} timezone={forecast!.forecastData.timezone}
+                selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
 
-          {/* Hourly */}
-          <HourlySection hourly={forecast!.forecastData.hourly} timezone={forecast!.forecastData.timezone} />
+            {/* Hourly */}
+            <HourlySection hourly={forecast!.forecastData.hourly} timezone={forecast!.forecastData.timezone} />
 
-          {/* Day Details Section */}
-          <DayDetailsSection dayDetails={forecast!.forecastData.daily[selectedDay]} timezone={forecast!.forecastData.timezone} />
+            {/* Day Details Section */}
+            <DayDetailsSection dayDetails={forecast!.forecastData.daily[selectedDay]} timezone={forecast!.forecastData.timezone} />
 
-          {/* Footer */}
-          <Footer />
-  </ForecastContainer>
+            {/* Footer */}
+            <Footer />
+          </ForecastContainer>
+        </BackgroundImage>
       </animated.div>
     )
   );
