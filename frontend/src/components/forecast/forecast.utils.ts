@@ -31,6 +31,12 @@ export const unixToStringShortWeekDay2Digit = (unix: number, timezone: string): 
     return new Intl.DateTimeFormat([], {weekday: 'short', day: '2-digit', timeZone: timezone}).format(date);
 }
 
+export const unixToStringLongWeekDay2Digit = (unix: number, timezone: string): string => {
+    // Wednesday 20
+    const date = new Date(unix * 1000);
+    return new Intl.DateTimeFormat([], {weekday: 'long', day: '2-digit', timeZone: timezone}).format(date);
+}
+
 export const unixToStringHourMinute = (unix: number, timezone: string): string => {
     // 03:00
     const date = new Date(unix * 1000);
