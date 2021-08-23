@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ReactSkycon } from 'react-skycons-extended';
 
 import { Card } from '../components/card/card.component';
-import { mapIconToSkycon, unixToStringShortWeekDay2Digit } from '../components/forecast/forecast.utils';
+import { getSkycon, unixToStringShortWeekDay2Digit } from '../components/forecast/forecast.utils';
 
 import { forecastExample } from './example.data';
 import TestingBackground from './background-for-testing.styles';
@@ -15,7 +15,7 @@ const exampleChildren: React.ReactNode = <div style={{display: 'flex', flexDirec
             forecastExample.forecastData.daily[0].dt,
             forecastExample.forecastData.timezone
             )}</span>
-            <ReactSkycon icon={mapIconToSkycon(forecastExample.forecastData.daily[0].weather[0].icon)}
+            <ReactSkycon icon={getSkycon(forecastExample.forecastData.daily[0].weather[0].icon)}
                 color='white' size={64}/>
             <span>{forecastExample.forecastData.daily[0].temp.day}&#176;C</span>
             <span style={{color: 'PaleTurquoise'}}>{forecastExample.forecastData.daily[0].feels_like.day}&#176;C</span>

@@ -5,7 +5,7 @@ import { GiWaterDrop } from 'react-icons/gi';
 import Section from '../section/section.component';
 import { Card } from '../card/card.component';
 
-import { mapIconToSkycon, unixToStringHourMinute } from '../forecast/forecast.utils';
+import { getSkycon, unixToStringHourMinute } from '../forecast/forecast.utils';
 import Hourly from '../../interfaces/forecast/hourly';
 
 interface HourlySectionProps {
@@ -22,7 +22,7 @@ const HourlySection = ({ hourly, timezone }: HourlySectionProps) => {
                             <Card key={`hour${index}`} className={`card hour${index}`}>
                                 <span className='card-dt'>{unixToStringHourMinute(hour.dt, timezone)}</span>
                                 <div className='card-icon'>
-                                    <ReactSkycon icon={mapIconToSkycon(hour.weather[0].icon)} color='white' size={64}/>
+                                    <ReactSkycon icon={getSkycon(hour.weather[0].icon)} color='white' size={64}/>
                                 </div>
                                 <span className='card-description'>{hour.weather[0].description}</span>
                                 <span className='card-temp'>{hour.temp}&#176;C</span>

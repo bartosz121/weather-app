@@ -4,7 +4,7 @@ import { ReactSkycon } from 'react-skycons-extended';
 import Section from '../section/section.component';
 import { Card } from '../card/card.component';
 
-import { mapIconToSkycon, unixToStringShortWeekDay2Digit } from '../forecast/forecast.utils';
+import { getSkycon, unixToStringShortWeekDay2Digit } from '../forecast/forecast.utils';
 import { Daily } from '../../interfaces/forecast/daily';
 
 interface DailySectionProps {
@@ -27,7 +27,7 @@ const DailySection = ({ daily, timezone, selectedDay, setSelectedDay }: DailySec
                         <Card key={`day${index}`} className={`card day${index}`} onClick={() => handleClick(index)} selected={selectedDay === index ? true : false}>
                             <span className='card-dt'>{unixToStringShortWeekDay2Digit(day.dt, timezone)}</span>
                             <div className='card-icon'>
-                                <ReactSkycon icon={mapIconToSkycon(day.weather[0].icon)} color='white' size={64}/>
+                                <ReactSkycon icon={getSkycon(day.weather[0].icon)} color='white' size={64}/>
                             </div>
                             <span className='card-description'>{day.weather[0].description}</span>
                             <span className='card-temp'>{day.temp.day}&#176;C</span>

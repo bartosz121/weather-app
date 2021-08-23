@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactSkycon } from 'react-skycons-extended';
 
 import ForecastHeaderContainer from './forecast-header.styles'
-import { mapIconToSkycon, unixToStringDateTimeTZ } from '../forecast/forecast.utils';
+import { getSkycon, unixToStringDateTimeTZ } from '../forecast/forecast.utils';
 
 import Current from '../../interfaces/forecast/current'
 
@@ -22,7 +22,7 @@ const ForecastHeader = ({ current, locationName, timezone, ...props }: ForecastH
             <div className='location-name'>{locationName}</div>
             <div className="current-temp-container">
                 <div className="current-icon">
-                    <ReactSkycon icon={mapIconToSkycon(icon)} color={'white'} size={128}/>
+                    <ReactSkycon icon={getSkycon(icon)} color={'white'} size={128}/>
                 </div>
                 <div className='current-temp'>
                     {current.temp}&#176;C
