@@ -12,6 +12,9 @@ const ReactLeafletGeosearchCSS = css`
 .leaflet-control-geosearch .leaflet-bar-part {
   border-radius: 4px;
   border-bottom: none;
+  ///
+  width: 40px;
+  height: 40px;
 }
 
 .leaflet-control-geosearch a.leaflet-bar-part:before,
@@ -23,18 +26,18 @@ const ReactLeafletGeosearchCSS = css`
 
 /* magnifying glass */
 .leaflet-control-geosearch a.leaflet-bar-part:before {
-  top: 19px;
-  left: 16px;
-  width: 8px;
+  top: 26px;
+  left: 21px;
+  width: 10px;
   border-top: 2px solid #555;
   transform: rotateZ(45deg);
 }
 
 .leaflet-control-geosearch a.leaflet-bar-part:after {
-  top: 6px;
-  left: 6px;
-  height: 14px;
-  width: 14px;
+  top: 10px;
+  left: 10px;
+  height: 15px;
+  width: 15px;
   border-radius: 50%;
   border: 2px solid #555;
 }
@@ -85,7 +88,7 @@ const ReactLeafletGeosearchCSS = css`
   background-clip: padding-box;
   z-index: -1;
   height: auto;
-  margin: 0;
+  margin-right: 14px;
   padding: 0 8px;
 }
 
@@ -101,7 +104,7 @@ const ReactLeafletGeosearchCSS = css`
   margin: 0;
   padding: 0;
   font-size: 12px;
-  height: 30px;
+  height: 40px;
   border-radius: 0 4px 4px 0;
   text-indent: 8px;
 }
@@ -161,7 +164,11 @@ const ReactLeafletGeosearchCSS = css`
 }
 
 .leaflet-control-geosearch.bar {
-  position: relative;
+  /* position: relative; */
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
   display: block;
   height: auto;
   width: 200px;
@@ -199,7 +206,7 @@ const ReactLeafletGeosearchCSS = css`
 .leaflet-control-geosearch a.reset {
   color: black;
   position: absolute;
-  line-height: 30px;
+  line-height: 40px;
   padding: 0 8px;
   right: 0;
   top: 0;
@@ -209,6 +216,12 @@ const ReactLeafletGeosearchCSS = css`
 
 .leaflet-control-geosearch a.reset:hover {
   background: #f5f5f5;
+}
+
+@media only screen and (min-width: 576px){
+  .leaflet-control-geosearch form input {
+    min-width: 400px;
+  }
 }
 `
 
