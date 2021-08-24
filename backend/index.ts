@@ -7,9 +7,12 @@ import fetchForecast from './utils';
 
 dotenv.config();
 
+const REACT_APP_ADDRESS = process.env.REACT_APP_IP || 'localhost';
+const REACT_APP_PORT = process.env.REACT_APP_PORT || '3000';
+
 const app = express();
 
-const allowedOrigins = [`http://${process.env.REACT_APP_IP}:${process.env.REACT_APP_PORT}`];
+const allowedOrigins = [`http://${REACT_APP_ADDRESS}:${REACT_APP_PORT}`];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
