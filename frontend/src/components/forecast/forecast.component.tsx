@@ -14,8 +14,7 @@ import { getLocationName } from './forecast.utils';
 import { ForecastContainer, BackgroundImage } from './forecast.styles';
 import { ForecastResponse } from '../../interfaces/forecast/forecastResponse';
 
-const EXPRESS_ADDRESS = process.env.REACT_APP_EXPRESS_ADDRESS || 'localhost';
-const EXPRESS_PORT = process.env.REACT_APP_EXPRESS_PORT || '8000';
+const EXPRESS_HOST = process.env.REACT_APP_EXPRESS_HOST || 'http://localhost:8000';
 
 interface ForecastProps extends RouteComponentProps {
   lat: number,
@@ -39,7 +38,8 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
 
   useEffect(() => {
     (async () => {
-      const forecastURL = `http://${EXPRESS_ADDRESS}:${EXPRESS_PORT}/api/forecast?lat=${lat}&lon=${lng}`
+      const forecastURL = `${EXPRESS_HOST}/api/forecast?lat=${lat}&lon=${lng}`
+      console.log(forecastURL);
       const locationURL = `https://nominatim.openstreetmap.org/reverse.php?lat=${lat}&lon=${lng}&addressdetails=0&format=jsonv2`
 
       // Forecast
