@@ -7,24 +7,18 @@ import fetchForecast from './utils';
 
 dotenv.config();
 
-const REACT_APP_ADDRESS = process.env.REACT_APP_IP || 'localhost';
-const REACT_APP_PORT = process.env.REACT_APP_PORT || '3000';
+const PORT = process.env.PORT || '8000';
 
 const app = express();
 
-const allowedOrigins = [`http://${REACT_APP_ADDRESS}:${REACT_APP_PORT}`];
+app.use(cors());
 
-const options: cors.CorsOptions = {
-  origin: allowedOrigins,
-};
-
-app.use(cors(options));
-
-if (!process.env.PORT) {
+if (!process.env.API_KEY) {
+  Logger.error('API_KEY NOT FOUND');
   process.exit(1);
 }
 
-const port = parseInt(process.env.PORT, 10);
+const port = parseInt(PORT, 10);
 
 app.get('/api/forecast', (req: Request, res: Response) => {
   Logger.debug(`***${req.method} request from ${req.hostname}(${req.ip})***`);
