@@ -17,6 +17,10 @@ const ReactLeafletGeosearchCSS = css`
   height: 40px;
 }
 
+.geosearch.leaflet-bar.leaflet-control.leaflet-control-geosearch {
+  margin-bottom: 50px;
+}
+
 .leaflet-control-geosearch a.leaflet-bar-part:before,
 .leaflet-control-geosearch a.leaflet-bar-part:after {
   position: absolute;
@@ -233,7 +237,7 @@ const LeafletContainer = styled.div`
   .fetch-btn {
     position: absolute;
     z-index: 500;
-    top: 80%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
     white-space: nowrap;
@@ -261,13 +265,13 @@ const LeafletContainer = styled.div`
       }
 
   @keyframes bouncy {
-    0%{top:80%}
-    40%{top:80%}
-    43%{top:78%}
-    46%{top:80%}
-    48%{top:78%}
-    50%{top:80%}
-    100%{top:80%;}
+    0%{top:75%}
+    40%{top:75%}
+    43%{top:72%}
+    46%{top:75%}
+    48%{top:72%}
+    50%{top:75%}
+    100%{top:75%;}
   } 
 
   & > div{
