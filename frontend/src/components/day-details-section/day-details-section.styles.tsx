@@ -20,11 +20,12 @@ const DayDetailsSectionContainer = styled.div`
         }
 
         &-info {
-            margin: 5px 0;
-        }
+            abbr {
+                font-variant: normal;
+                text-decoration: underline solid;
+            }
 
-        &-temp {
-            .temp-text {
+            .info-text {
                 font-size: 1.2em;
             }
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import DayTempSection from '../components/day-temp-section/day-temp-section.component';
+import DayInfoSection from '../components/day-info-section/day-info-section.component';
 
 import { forecastExample, locationExample } from './example.data';
 import TestingBackground from './background-for-testing.styles';
@@ -10,13 +10,13 @@ import './font.css'
 
 export default {
     title: 'Day Details Components NO STYLES/Day Temp Section',
-    component: DayTempSection,
-} as ComponentMeta<typeof DayTempSection>;
+    component: DayInfoSection,
+} as ComponentMeta<typeof DayInfoSection>;
 
-const Template: ComponentStory<typeof DayTempSection> = (args) => <TestingBackground><DayTempSection {...args} /></TestingBackground>
+const Template: ComponentStory<typeof DayInfoSection> = (args) => <TestingBackground><DayInfoSection {...args} /></TestingBackground>
 
 export const Example = Template.bind({});
 Example.args = {
-    temp: forecastExample.forecastData.daily[0].temp,
+    day: forecastExample.forecastData.daily[0],
     weatherDesc: forecastExample.forecastData.daily[0].weather[0].description,
 }
