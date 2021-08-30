@@ -11,6 +11,7 @@ const ForecastHeaderContainer = styled.div`
         width: 75%;
         text-align: center;
         font-size: 1.1em;
+        margin-top: 10px;
     }
 
     .current-temp-container {
