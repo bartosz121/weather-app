@@ -10,6 +10,8 @@ export const ForecastContainer = styled.div`
     height: 100%;
     width: 100%;
     padding: 10px 0 25px 0;
+    background: rgba(0,0,0, 0.3);
+    box-shadow: 0 0 80px 80px rgba(0,0,0, 0.3);
 
     @media only screen and (min-width: 1200px){
         width: 80%;
