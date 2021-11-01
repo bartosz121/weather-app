@@ -24,7 +24,7 @@ const DailySection = ({ daily, timezone, selectedDay, setSelectedDay }: DailySec
             <div className='gallery'>
                 {
                     daily.map((day, index) => (
-                        <Card key={`day${index}`} className={`card day${index}`} onClick={() => handleClick(index)} selected={selectedDay === index ? true : false}>
+                        <Card key={`day${index}`} className={`card day${index}`} onClick={() => handleClick(index)} selected={selectedDay === index ? true : false} clickable={true}>
                             <span className='card-dt'>{unixToStringShortWeekDay2Digit(day.dt, timezone)}</span>
                             <div className='card-icon'>
                                 <ReactSkycon icon={getSkycon(day.weather[0].icon)} color='white' size={64}/>

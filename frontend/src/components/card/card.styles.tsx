@@ -7,6 +7,10 @@ const highlight = css`
     border: 1px solid white;
 `
 
+const clickable = css`
+    cursor: pointer;
+`
+
 const CardContainer = styled.div<CardProps>`
     height: 150px;
     width: 150px;
@@ -19,11 +23,13 @@ const CardContainer = styled.div<CardProps>`
     padding: 5px;
     border: 1px solid transparent;
     transition: all .3s ease;
-    
+
+
     ${props => props.selected ? highlight : null }
 
     &:hover {
         ${highlight};
+        ${props => props.clickable ? clickable : null}
     }
 
 `;
