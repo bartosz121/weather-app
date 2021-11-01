@@ -75,6 +75,9 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
       <animated.div
         style={{
           position: "absolute",
+          height: "100%",
+          width: "100%",
+          background: "#1d2630",
           ...style
         }}
       >
@@ -84,7 +87,7 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
       <animated.div
         style={{...style}}
       >
-        <BackgroundImage icon={forecast!.forecastData.current.weather[0].icon}>
+          <BackgroundImage icon={forecast!.forecastData.current.weather[0].icon} />
           <ForecastContainer>
             {/* Header */}
             <ForecastHeader className='forecast-header' locationName={location} current={forecast!.forecastData.current} timezone={forecast!.forecastData.timezone} />
@@ -107,8 +110,7 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
             {/* Footer */}
             <Footer />
           </ForecastContainer>
-        </BackgroundImage>
-      </animated.div>
+        </animated.div>
     )
   );
 }

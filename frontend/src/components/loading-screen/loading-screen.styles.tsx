@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const LoadingScreenContainer = styled.div`
     min-height: 100vh;
-    min-width: 100vw;
+    min-width: 97vw;
     background: #1d2630;
 
     .spinner-box {
@@ -18,7 +18,7 @@ const LoadingScreenContainer = styled.div`
         top: 50%;
         left: 50%;
         margin-right: -50%;
-        transform: translate(-50%, -50%) 
+        transform: translate(-50%, -50%)
     }
 
     /* ALTERNATING ORBITS */
