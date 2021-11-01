@@ -1,5 +1,6 @@
 import React from 'react';
 import { ReactSkycon } from 'react-skycons-extended';
+import { HiArrowUp } from 'react-icons/hi';
 
 import ForecastHeaderContainer from './forecast-header.styles'
 import { getSkycon, unixToStringDateTimeTZ } from '../forecast/forecast.utils';
@@ -40,7 +41,7 @@ const ForecastHeader = ({ current, locationName, timezone, ...props }: ForecastH
                 <span className='current-info dew-point'>Dew point {current.dew_point}&#176;C</span>
                 <span className='current-info clouds'>Clouds {current.clouds}%</span>
                 <span className='current-info visibility'>Visibility {Math.round(current.visibility/1000)}km</span>
-                <span className='current-info wind'>Wind {current.wind_deg} {Math.round(current.wind_speed*3.6)}km/h</span>
+                <span className='current-info wind'>Wind <HiArrowUp style={{ transform: `rotate(${current.wind_deg}deg)` }}/> {Math.round(current.wind_speed*3.6)}km/h</span>
             </div>
         </ForecastHeaderContainer>
     )
