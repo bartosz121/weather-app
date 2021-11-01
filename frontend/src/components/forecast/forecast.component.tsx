@@ -50,7 +50,7 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
           console.log(forecastRes);
         })
         .catch(error => {
-          alert(`${error} Redirecting...`);
+          alert(`${error} Redirecting... IF ERROR IS ABOUT CORS - PLEASE REFRESH AND TRY AGAIN :) I will fix it soon!!!`);
           history.push('/');
         })
 
@@ -62,7 +62,7 @@ const Forecast = ({ lat, lng, history }: ForecastProps) => {
           console.log(locationData);
         })
         .catch(error => {
-          alert(`${error} Redirecting...`);
+          alert(`${error} Redirecting... IF ERROR IS ABOUT CORS - PLEASE REFRESH AND TRY AGAIN :) will be fixed soon!!!`);
           history.push('/');
         })
 
