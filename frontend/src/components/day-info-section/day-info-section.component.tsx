@@ -16,15 +16,15 @@ const DayInfoSection = ({ day, weatherDesc }: DayInfoSectionProps) => {
                 {weatherDesc}
             </h3>
             <div className='day-details-info-day'>
-                { day.rain ? 
+                { day.rain ?
                     <div className='day-details-info'>
-                        <span className='small-title'><abbr title='Precipitation volume'>Rain</abbr></span>
+                        <span className='small-title'><span title='Precipitation volume'>Rain</span></span>
                         <span className='info-text'> {day.rain.toFixed(2)} mm</span>
                     </div>
                 : null}
-                { day.snow ? 
+                { day.snow ?
                     <div className='day-details-info'>
-                        <span className='small-title'><abbr title='Snow volume'>Snow</abbr></span>
+                        <span className='small-title'><span title='Snow volume'>Snow</span></span>
                         <span className='info-text'> {day.snow.toFixed(2)} mm</span>
                     </div>
                 : null}
